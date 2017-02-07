@@ -1,0 +1,151 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.min.css" integrity="sha256-J2MxVJvpHeOeT0uUGqoj5CkoFkT4zBEweNmqP/UWu1U=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <nav class="nav has-shadow">
+        <div class="nav-left">
+            <a class="nav-item">CMSC 473/673</a>
+        </div>
+
+
+        <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+        <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+        <span class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+        </span>
+
+        <div class="nav-center nav-menu">
+            <a class="nav-item">Introduction to Natural Language Processing</a>
+        </div>
+        <!-- This "nav-menu" is hidden on mobile -->
+        <!-- Add the modifier "is-active" to display it on mobile -->
+        <div class="nav-right nav-menu">
+            <a class="nav-item" href="#syllabus">Syllabus</a>
+            <a class="nav-item" href="#work">Assignments</a>
+            <a class="nav-item" href="#schedule">Schedule</a>
+        </div>
+    </nav>
+
+
+
+
+    <section class="section" id="work">
+	<div class="container">
+	   <p class="title is-2">Homework 1</p>
+	   <p>
+		The focus of this assignment will be to gain experience building and using language models.
+    It is made up of X parts as follows. Please pay attention to the different requirements based on
+    the course number you are enrolled in. You are free to use any language you like, as long as it
+    runs on GL. There is no specific coding standard, but please make your code readable.
+
+    If you use any language that requires compilation please include the appropriate Makefile, Ant script, etc.
+    In addition, all submissions must have a README.md that describes how to run and use your program(s).
+
+	   </p>
+
+    <p class="subtitle is-3">Part 1: Reading the Data (10 Points)</p>
+     <p>
+       The first part of any statistical NLP application is read in the corpus. For this assignment,
+       your program should take a command line argument that is the location of a text file. This text
+       file is a bit messy, the sentences are not segmented by line. For this first part, you need to
+       read in the text and segment it into setnences and words. The accuracy of your segmentation method
+       is not important, and you will not be graded on it. Please list any assumptions you make and how you
+       segment your data as part of your README.
+
+
+     </p>
+
+     <p class="subtitle is-3">Part 2: Bulding a Simple N-gram Language Model (20 Points)</p>
+     <p>
+       For this part of the assignment, you need to build a simple N-gram Model, with no
+       smoothing or other techniques to deal with 0s. You can not use any existing NLP libraries
+       to do this, although you are permitted to use any mathematical libraries you wish, which
+       may make storing the counts easier.
+     </p>
+     <p class="subtitle is-4">For CMSC 473 Students:</p>
+     <p>
+       <ul>
+         <li>
+           You N-gram model should use bigrams
+         </li>
+       </ul>
+     </p>
+     <p class="subtitle is-4">For CMSC 673 Students:</p>
+     <p>
+       <ul>
+         <li>
+           You N-gram model should use trigrams
+         </li>
+       </ul>
+     </p>
+
+
+     <p class="subtitle is-3">Part 3: Smoothing your Language Model (20 Points)</p>
+     <p>
+       As we have discussed in class, having counts of 0 and thus probabilities of 0 is not ideal in a LM. For
+       this part of the assignment you need to implement a smoothed version of your language model. I suggest
+       adding this to the same program as the one used to build the simple N-gram model, but make sure to save
+       the simple model somehow before you smooth your model. For this part everyone will implement Good-Turing
+       smoothing.
+     </p>
+     <p class="subtitle is-4">Note:</p>
+     <p>
+       Don't forget that when using GT smoothing some bins may have a a count of zero. You are free to remedy this
+       anyway you see fit, but the simplest is to use the counts of the surrounding bins and estimate it as a a percentage of
+       the two. For example, if you have a value for N_4 and N_6, but not N_5, you can set N_5 to N_4 + N_6 / 2. If you
+       have values for N_4 and N_7, but neither N_5 or N_6, you should set N_5 to be 1/3 * (N_7-N_4) + N_4, while N_6 should be
+       2/3 * (N_7-N4) + N_4. Again how you do this is not important as long as your program runs with out errors, and you document
+       your decision in your README file.
+     </p>
+
+     <p class="subtitle is-3">Part 4: Using Interpoloation or Backoff (30 Points)</p>
+     <p>
+       In this part of the assignment, you must use either simple interpolation or
+       backoff to further improve your language model. Which you use depends on the
+       course you are registered for.
+     </p>
+     <p class="subtitle is-4">For CMSC 473 Students:</p>
+     <p>
+       <ul>
+         <li>
+           You should implement simple interpolation between the bigram and unigram models.
+           The weights are up to you, just document them and make sure they add up to 1.
+         </li>
+       </ul>
+     </p>
+     <p class="subtitle is-4">For CMSC 673 Students:</p>
+     <p>
+       <ul>
+         <li>
+           You should implement backoff. ETC
+         </li>
+       </ul>
+     </p>
+
+    <p class="subtitle is-3">Part 5: Claculate Perplexity (10 Points)</p>
+    <p>
+      Write a program that calcluate the perlexity of a language model. The program should take two arguments,
+      the location of the saved langauge model, and a text file that has already been run through your
+      segemntation program. Using the text file X as your test set, report your perplexities in your README for your
+      3 language models.
+    </p>
+
+
+
+    <p class="subtitle is-3">Part 6: Short Analysis (10 Points)</p>
+    <p>
+      Run the following sentence pairs on each of your language models. For each sentence pair discuss the differences in probabilties produced and which you think makes more sense.
+    </p>
+	</div>
+    </section>
+
+</body>
+
+</html>
