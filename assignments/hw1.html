@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.min.css" integrity="sha256-J2MxVJvpHeOeT0uUGqoj5CkoFkT4zBEweNmqP/UWu1U=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>UMBC CMSC 473/673 HW1</title>
 </head>
 
 <body>
@@ -38,16 +39,17 @@
 
     <section class="section" id="work">
 	<div class="container">
-	   <p class="title is-2">Homework 1</p>
+	   <p class="title is-2">Homework 1 (DUE 2/21 11:59:59 PM EST)</p>
 	   <p>
 		The focus of this assignment will be to gain experience building and using language models.
-    It is made up of X parts as follows. Please pay attention to the different requirements based on
+    It is made up of 6 parts as follows. Please pay attention to the different requirements based on
     the course number you are enrolled in. You are free to use any language you like, as long as it
     runs on GL. There is no specific coding standard, but please make your code readable.
 
     If you use any language that requires compilation please include the appropriate Makefile, Ant script, etc.
     In addition, all submissions must have a README.md that describes how to run and use your program(s).
 
+The repository for this assignment is hw1. To accept the assignment and create your specific repository, go to <a href="https://classroom.github.com/assignment-invitations/2d22885526d083e1eb2b2a0ffb6c903d">https://classroom.github.com/assignment-invitations/2d22885526d083e1eb2b2a0ffb6c903d</a>.
 	   </p>
 
     <p class="subtitle is-3">Part 1: Reading the Data (10 Points)</p>
@@ -57,7 +59,7 @@
        file is a bit messy, the sentences are not segmented by line. For this first part, you need to
        read in the text and segment it into setnences and words. The accuracy of your segmentation method
        is not important, and you will not be graded on it. Please list any assumptions you make and how you
-       segment your data as part of your README.
+       segment your data as part of your README. To train you model you should use the file /afs/umbc.edu/users/b/w/bwilk1/pub/assignment1.corpus located on GL. I reccomend reading it directly from this location as it is 39M. 
 
 
      </p>
@@ -99,9 +101,9 @@
      <p>
        Don't forget that when using GT smoothing some bins may have a a count of zero. You are free to remedy this
        anyway you see fit, but the simplest is to use the counts of the surrounding bins and estimate it as a a percentage of
-       the two. For example, if you have a value for N_4 and N_6, but not N_5, you can set N_5 to N_4 + N_6 / 2. If you
-       have values for N_4 and N_7, but neither N_5 or N_6, you should set N_5 to be 1/3 * (N_7-N_4) + N_4, while N_6 should be
-       2/3 * (N_7-N4) + N_4. Again how you do this is not important as long as your program runs with out errors, and you document
+       the two. For example, if you have a value for N<sub>4</sub> and N<sub>6</sub>, but not N<sub>5</sub>, you can set N<sub>5</sub> to N<sub>4</sub> + N<sub>6</sub> / 2. If you
+       have values for N<sub>4</sub> and N<sub>7</sub>, but neither N<sub>5</sub> or N<sub>6</sub>, you should set N<sub>5</sub> to be 1/3 * (N<sub>7</sub>-N<sub>4</sub>) + N<sub>4</sub>, while N<sub>6</sub> should be
+       2/3 * (N<sub>7</sub>-N<sub>4</sub>) + N<sub>4</sub>. Again how you do this is not important as long as your program runs with out errors, and you document
        your decision in your README file.
      </p>
 
@@ -124,7 +126,7 @@
      <p>
        <ul>
          <li>
-           You should implement backoff. ETC
+           You should Katz Backoff, as outlined in section 2.4 of <a href="http://u.cs.biu.ac.il/~yogo/courses/mt2013/papers/chen-goodman-99.pdf">An empirical study of smoothing techniques for language modeling</a> This may be tricky to implement, so start early. 
          </li>
        </ul>
      </p>
@@ -133,17 +135,29 @@
     <p>
       Write a program that calcluate the perlexity of a language model. The program should take two arguments,
       the location of the saved langauge model, and a text file that has already been run through your
-      segemntation program. Using the text file X as your test set, report your perplexities in your README for your
+      segementation program. Using the text file /afs/umbc.edu/users/b/w/bwilk1/pub/assignment1.corpus.test as your test set, report your perplexities in your README for your
       3 language models.
     </p>
 
 
 
     <p class="subtitle is-3">Part 6: Short Analysis (10 Points)</p>
+    <div class="content">
     <p>
-      Run the following sentence pairs on each of your language models. For each sentence pair discuss the differences in probabilties produced and which you think makes more sense.
+      Run the following sentence pairs in each of your language models. For each sentence pair discuss the differences in probabilties produced and which you think makes more sense. This can be placed in your README.md
+	<ul>
+		<li>Many people live on the west coast. Many people live on the east coast.</li>
+		<li>Deep creek lake is in western Maryland. The Appalachians are in western Maryland</li>
+	        <li>The Patriots won Super Bowl LI. The Patriots won Super Bow XXXVI</li>
+	</ul>
+    </p>
+    </div>
+    <p class="subtitle is-3">What to Turn In</p>
+    <p>
+	For this assignment turn in a README.md describing any outside sources you used as well as assumptions you made. In addition turn in all code and your 3 language models. We may test your code with a different corpus as well. Your language model code can take in any arugments you want, as long as they are documented. I reccomend that your smoothing code take as an arugment your unsmoothed language model so that you don't have to do all the data processing and counting again.
     </p>
 	</div>
+
     </section>
 
 </body>
